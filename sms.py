@@ -1,8 +1,12 @@
 from twilio.rest import Client
+import json
 
 # twilio information
-account_sid = 'ACe32f19d54110fbd869514ac17e443ef3'
-auth_token = '20f45cc2933d3fd9875c1e6293ee0327'
+with open("secrets.json", "r") as f:
+    secrets = json.loads(f.read())
+
+account_sid = secrets["Twilio_API_ID"]
+auth_token = secrets["Twilio_API_Token"]
 client = Client(account_sid, auth_token)
 
 def send_notification(other_team):
